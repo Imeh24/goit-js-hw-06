@@ -5,14 +5,17 @@ const input = document.getElementById('validation-input');
 input.addEventListener('blur', validateInput);
 
 function validateInput() {
-  const enteredValue = input.value.trim();
+  const enteredValue = input.value.trim().length;
   const expectedLength = +input.getAttribute('data-length');
 
-  console.log('Entered Value:', enteredValue);
-  console.log(`Enter Length Value:`, enteredValue.length)
-  console.log('Expected Length:', expectedLength);
-
-  input.classList.toggle('valid', enteredValue.length === expectedLength);
-  input.classList.toggle('invalid', enteredValue.length !== expectedLength);
+ if (enteredValue === 0) {
+  input.classList.remove('invalid');
+  input.classList.remove('valid');
+ } else if (enteredValue === expectedLength) {
+  input.classList.remove('invalid');
+  input.classList.add('valid');
+ } else {
+  input.classList.remove('valid');
+  input.classList.add('invalid');
+ }
 }
- 
