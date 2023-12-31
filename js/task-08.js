@@ -16,8 +16,8 @@ if(!email || !password) {
     return;
 } 
     const formData = {
-        email: email.value,
-        password: password.value
+        email: email,
+        password: password
     }
  
 console.log(formData);
